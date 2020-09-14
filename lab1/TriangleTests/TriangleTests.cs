@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace TriangleTests
 {
@@ -18,12 +19,13 @@ namespace TriangleTests
 
             while ((line = inStream.ReadLine()) != null)
             {
+                var args = Regex.Replace(line, @"\s+", " ").Split();
                 var expectedResult = inStream.ReadLine();
                 var consoleStr = new StringWriter();
                 Console.SetOut(consoleStr);
                 Console.SetError(consoleStr);
-
-                Triangle.Program.Main(line.Split(" "));
+                
+                Triangle.Program.Main(args);
                 if (consoleStr.ToString().Replace("\r\n", "") == expectedResult)
                 {
                     outStream.WriteLine($"{counter++} success");
