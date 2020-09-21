@@ -32,7 +32,7 @@ namespace TriangleTests
                 }
                 else
                 {
-                    outStream.WriteLine($"{counter++} (line: {counter * 2 - 1}) error");
+                    outStream.WriteLine($"{counter++} (line: {counter * 2}) error");
                     completedSuccessfully = false;
                 }
             }
