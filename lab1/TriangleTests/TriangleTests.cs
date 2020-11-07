@@ -1,7 +1,8 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Triangle;
 
 namespace TriangleTests
 {
@@ -14,8 +15,8 @@ namespace TriangleTests
             using var inStream = new StreamReader("intests.txt");
             using var outStream = new StreamWriter("outtests.txt");
             string line;
-            bool completedSuccessfully = true;
-            int counter = 0;
+            var completedSuccessfully = true;
+            var counter = 0;
 
             while ((line = inStream.ReadLine()) != null)
             {
@@ -24,8 +25,8 @@ namespace TriangleTests
                 var consoleStr = new StringWriter();
                 Console.SetOut(consoleStr);
                 Console.SetError(consoleStr);
-                
-                Triangle.Program.Main(args);
+
+                Program.Main(args);
                 if (consoleStr.ToString().Replace("\r\n", "") == expectedResult)
                 {
                     outStream.WriteLine($"{counter++} success");
@@ -36,6 +37,7 @@ namespace TriangleTests
                     completedSuccessfully = false;
                 }
             }
+
             Assert.IsTrue(completedSuccessfully);
         }
     }
