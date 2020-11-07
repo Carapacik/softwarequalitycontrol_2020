@@ -1,0 +1,30 @@
+Font: Times New Roman, Arial, MT Extra, Webdings
+Style: regular, italic, bold, bold italic
+Size: 1, 4000, 16, 11.5 
+Color: red, black, green
+Underline: no, single, double, bold
+Underline color: no, red, black
+Strikethrough: yes, no
+Double strikethrough: yes, no
+Superscript: yes, no
+Subscript: yes, no
+Small uppercase: yes, no
+All uppercase: yes, no
+Align the height of characters: yes, no
+Shift: -100, -50, -1, 0, 1, 50, 100
+
+IF [Underline] = "no" THEN [Underline color] = "no";
+IF [Underline color] = "no" THEN [Underline] = "no";
+
+IF [Strikethrough] = "yes" THEN [Double strikethrough] = "no";
+IF [Double strikethrough] = "yes" THEN [Strikethrough] = "no";
+
+IF [Superscript] = "yes" THEN [Subscript] = "no";
+IF [Subscript] = "yes" THEN [Superscript] = "no";
+
+IF [Small uppercase] = "yes" THEN [All uppercase] = "no";
+IF [All uppercase] = "yes" THEN [Small uppercase] = "no";
+
+IF [Shift] in {-100, -50, -1} THEN [Superscript] = "yes";
+IF [Shift] in {1, 50, 100} THEN [Subscript] = "yes";
+IF [Shift] = 0 THEN [Superscript] = "no" AND [Subscript] = "no";
