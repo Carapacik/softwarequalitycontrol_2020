@@ -1,19 +1,18 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Triangle;
+using Xunit;
 
 namespace TriangleTests
 {
-    [TestClass]
     public class TriangleTests
     {
-        [TestMethod]
+        [Fact]
         public void RunTests()
         {
-            using var inStream = new StreamReader("intests.txt");
-            using var outStream = new StreamWriter("outtests.txt");
+            using var inStream = new StreamReader("../../../input.txt");
+            using var outStream = new StreamWriter("../../../output.txt");
             string line;
             var completedSuccessfully = true;
             var counter = 0;
@@ -38,7 +37,7 @@ namespace TriangleTests
                 }
             }
 
-            Assert.IsTrue(completedSuccessfully);
+            Assert.True(completedSuccessfully);
         }
     }
 }
