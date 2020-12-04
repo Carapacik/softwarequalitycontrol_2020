@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MounteBank", "MounteBank\MounteBank.csproj", "{3C65503A-4DB2-41A0-B9CC-E46D44AEE131}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C65503A-4DB2-41A0-B9CC-E46D44AEE131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C65503A-4DB2-41A0-B9CC-E46D44AEE131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C65503A-4DB2-41A0-B9CC-E46D44AEE131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C65503A-4DB2-41A0-B9CC-E46D44AEE131}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
