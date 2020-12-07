@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MbDotNet;
 using MbDotNet.Enums;
+using static System.Net.HttpStatusCode;
 
 namespace MounteBank
 {
@@ -17,11 +17,11 @@ namespace MounteBank
             if (response.IsSuccessStatusCode)
             {
                 var text = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"\r\nRequest: {request} \r\nStatus code: {response.StatusCode} \r\nContent: {text}");
+                Console.WriteLine($"\r\nRequest: {request} \r\nStatus: {response.StatusCode} \r\n{text}");
             }
             else
             {
-                Console.WriteLine($"\r\nRequest: {request} \r\nStatus code: {response.StatusCode}");
+                Console.WriteLine($"\r\nRequest: {request} \r\nStatus: {response.StatusCode}");
             }
         }
 
@@ -33,22 +33,22 @@ namespace MounteBank
             var euro = new TestObj {Key = "eur", Rate = 44.88};
             var yen = new TestObj {Key = "yen", Rate = 1.36};
 
-            imposter.AddStub().ReturnsJson(HttpStatusCode.OK, usd)
+            imposter.AddStub().ReturnsJson(OK, usd)
                 .OnPathAndMethodEqual($"/rate/{usd.Key}", Method.Get);
-            imposter.AddStub().ReturnsJson(HttpStatusCode.OK, euro)
+            imposter.AddStub().ReturnsJson(OK, euro)
                 .OnPathAndMethodEqual($"/rate/{euro.Key}", Method.Get);
-            imposter.AddStub().ReturnsJson(HttpStatusCode.OK, yen)
+            imposter.AddStub().ReturnsJson(OK, yen)
                 .OnPathAndMethodEqual($"/rate/{yen.Key}", Method.Get);
 
-            imposter.AddStub().ReturnsStatus(HttpStatusCode.BadRequest);
+            imposter.AddStub().ReturnsStatus(BadRequest);
 
-            await client.SubmitAsync(imposter);
-
+            client.Submit(imposter);
             await Request("usd");
             await Request("eur");
             await Request("yen");
             await Request("rub");
-            await client.DeleteAllImpostersAsync();
+
+            client.DeleteAllImposters();
         }
 
         private struct TestObj

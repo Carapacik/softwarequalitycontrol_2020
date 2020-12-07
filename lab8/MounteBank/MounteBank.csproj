@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MbDotNet" Version="5.0.0-rc6" />
+      <PackageReference Include="MbDotNet" Version="4.3.3" />
     </ItemGroup>
 
 </Project>
