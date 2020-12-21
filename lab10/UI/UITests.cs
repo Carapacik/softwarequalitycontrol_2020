@@ -28,7 +28,12 @@ namespace UI
         [Order(2)]
         public void AddToCartTest()
         {
-            var expected = new[] {"Casio MRP-700-1AVEF", "$300", "$300"};
+            var expected = new[]
+            {
+                "Casio MRP-700-1AVEF",
+                "$300",
+                "$300"
+            };
             Assert.AreEqual(expected, Order.AddToCart(_driver));
         }
 
@@ -42,6 +47,18 @@ namespace UI
                 "Спасибо за Ваш заказ. В ближайшее время с Вами свяжется менеджер для согласования заказа"
             };
             Assert.AreEqual(expected, Order.MakeOrder(_driver));
+        }
+
+        [Test]
+        [Order(4)]
+        public void SearchTest()
+        {
+            var expected = new[]
+            {
+                "Поиск по запросу \"Casio\"",
+                "47"
+            };
+            Assert.AreEqual(expected, Search.SearchProduct(_driver));
         }
 
         [OneTimeTearDown]
