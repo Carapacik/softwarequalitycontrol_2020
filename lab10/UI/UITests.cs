@@ -13,11 +13,11 @@ namespace UI
         {
             _driver = new FirefoxDriver();
             _driver.Manage().Window.Maximize();
-            _driver.Navigate().GoToUrl("http://91.210.252.240:9000/");
+            _driver.Navigate().GoToUrl("http://91.210.252.240:9000");
         }
 
         [Test]
-        [Order(1)]
+        [Order(0)]
         public void AuthorizationTest()
         {
             const string expected = "Вы успешно авторизованы";
@@ -25,7 +25,7 @@ namespace UI
         }
 
         [Test]
-        [Order(2)]
+        [Order(1)]
         public void AddToCartTest()
         {
             var expected = new[]
@@ -38,7 +38,7 @@ namespace UI
         }
 
         [Test]
-        [Order(3)]
+        [Order(2)]
         public void MakeOrderTest()
         {
             var expected = new[]
@@ -50,7 +50,7 @@ namespace UI
         }
 
         [Test]
-        [Order(4)]
+        [Order(3)]
         public void SearchTest()
         {
             var expected = new[]

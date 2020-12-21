@@ -16,7 +16,7 @@ namespace UI
             var addToCartBtn = By.XPath("/html/body/div[4]/div[3]/div/div/div[1]/div[1]/div[2]/div/a");
             var addToCart = webDriver.FindElement(addToCartBtn);
             addToCart.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(1500);
             var orderNameLink = By.XPath("/html/body/div[7]/div/div/div[2]/div/table/tbody/tr[1]/td[2]/a");
             var orderNameText = webDriver.FindElement(orderNameLink).Text;
             var totalPrice = By.XPath("//*[@id='cart']/div/div/div[2]/div/table/tbody/tr[3]/td[2]");
@@ -26,17 +26,17 @@ namespace UI
             continueShopping.Click();
             var cartPriceSpan = By.XPath("/html/body/div[1]/div/div/div[2]/div/a/div/span");
             var cartPriceText = webDriver.FindElement(cartPriceSpan).Text;
+            Thread.Sleep(1000);
 
             return new[] {orderNameText, totalPriceText, cartPriceText};
         }
 
         internal static string[] MakeOrder(IWebDriver webDriver)
         {
-            Thread.Sleep(1000);
             var openCartBtn = By.XPath("/html/body/div[1]/div/div/div[2]/div/a");
             var openCart = webDriver.FindElement(openCartBtn);
             openCart.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(1500);
             var makeOrderBtn = By.XPath("/html/body/div[7]/div/div/div[3]/a");
             var makeOrder = webDriver.FindElement(makeOrderBtn);
             makeOrder.Click();
@@ -46,7 +46,7 @@ namespace UI
             var totalPriceText = webDriver.FindElement(totalPrice).Text;
             var noteTextArea = By.XPath("/html/body/div[4]/div[3]/div/div/div/div/div[3]/form/div/textarea");
             var note = webDriver.FindElement(noteTextArea);
-            note.SendKeys("подарочек положите");
+            note.SendKeys("Заверните в подарочную упаковку");
             var orderBtn = By.XPath("/html/body/div[4]/div[3]/div/div/div/div/div[3]/form/button");
             var order = webDriver.FindElement(orderBtn);
             order.Click();
